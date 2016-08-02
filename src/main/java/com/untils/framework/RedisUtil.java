@@ -1,9 +1,10 @@
 package com.untils.framework;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -12,13 +13,14 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 缓存工具类
+ * 缓存使用工具类
  * Created by hefule on 2016/8/2.
  */
-@Component
-public class RedisUtil extends LoggerInfo<RedisUtil>{
+@Service("redisUtil")
+public class RedisUtil{
 
     @Autowired
+    @Qualifier("redisTemplate")
     private RedisTemplate redisTemplate;
 
     /**
@@ -53,9 +55,9 @@ public class RedisUtil extends LoggerInfo<RedisUtil>{
      *  @date 2016/8/2 16:43
      *
      */
-    public List<String> loadAllKey(){
-        Set<Serializable> keys = redisTemplate.keys("*");
-        return Arrays.asList((String[]) keys.toArray());
+    public List<Object> loadAllKey(){
+        Set<String> keys = redisTemplate.keys("*");
+        return Arrays.asList(keys.toArray());
     }
 
     /**
@@ -138,4 +140,5 @@ public class RedisUtil extends LoggerInfo<RedisUtil>{
         }
         return result;
     }
+
 }

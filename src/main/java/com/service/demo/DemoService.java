@@ -27,12 +27,15 @@ public class DemoService extends LoggerInfo<DemoService> {
     }
 
     /**
-     *需要需要用到缓存时标记就好
+     * 需要需要用到缓存时标记就好，
+     * 查增时候使用  @Cacheable
+     * 当是改的时候 @cachePut
+     * 如果需要删除时候用CacheEvict
      *@author hefule
      *@date 2016/8/2 15:09
      *
      */
-    @Cacheable(value = "userCache", keyGenerator = "wiselyKeyGenerator")
+    @Cacheable("userCache")
     public Demo getUserInfo() throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
         return userMapper.findUserInfo();

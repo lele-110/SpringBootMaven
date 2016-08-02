@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 /**
  * Created by hefule on 2016/7/31.
  */
@@ -32,11 +34,14 @@ public class HomeAction extends LoggerInfo<HomeAction>{
         try {
             model.addAttribute("name","dddd");
             model.addAttribute("demo",demoService.getUserInfo());
-            System.out.println(redisUtil.loadAllKey());
+            Object lin = redisUtil.loadObject("userCache");
+            List<Object> rr = redisUtil.loadAllKey();
+            System.out.println(rr);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "index";
     }
+
 
 }

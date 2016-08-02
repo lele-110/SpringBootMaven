@@ -31,7 +31,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      *@date 2016/8/2 14:28
      *
      */
-    @Bean(name = "wiselyKeyGenerator")
+    @Bean
     public KeyGenerator wiselyKeyGenerator(){
         //lambda表达式
         return (target, method, params) -> {
@@ -50,22 +50,20 @@ public class RedisConfig extends CachingConfigurerSupport {
      * 返回缓存管理对象-redis
      *@author hefule
      *@date 2016/8/2 14:29
-     * @param redisTemplate 通过下面的 redisTemplate（）方法注入
      */
-    @Bean(name = "cacheManager")
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        return new RedisCacheManager(redisTemplate);
+    @Bean(name="cacheManager")
+    public CacheManager cacheManager() {
+        return new RedisCacheManager(redisTemplate());
     }
 
     /**
      *  redis对象设置
      *@author hefule
      *@date 2016/8/2 14:33
-     * @param redisConnectionFactory 通过下面的 redisConnectionFactory（）方法注入
      */
-    @Bean(name = "redisTemplate")
-    public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        StringRedisTemplate template = new StringRedisTemplate(redisConnectionFactory);
+    @Bean(name="redisTemplate")
+    public RedisTemplate redisTemplate() {
+        StringRedisTemplate template = new StringRedisTemplate(redisConnectionFactory());
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
@@ -82,9 +80,9 @@ public class RedisConfig extends CachingConfigurerSupport {
      *@date 2016/8/2 14:47
      *
      */
-    @Bean(name = "redisConnectionFactory")
+    @Bean
     @ConfigurationProperties(prefix = "spring.redis")
     public RedisConnectionFactory redisConnectionFactory(){
-       return new JedisConnectionFactory();
+        return new JedisConnectionFactory();
     }
 }
