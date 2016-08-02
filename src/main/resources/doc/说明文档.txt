@@ -1,3 +1,6 @@
+框架
+后端框架：springboot+redis+mysql
+前段框架：jQuery UI Bootstrap
 目录划分
 1.resources全部是放配置文件的，包括mybatis的xml
 2.java/com里面都是放对应的类
@@ -5,5 +8,7 @@
 项目运行
 1.按照自己的mysql的数据库更改application.properties的数据源
 2.执行sql文件
-3.启动redisInstall下的redis-server.exe
+3.启动redisInstall下的redis-server.exe ，
+（或者作为window服务启动也可以），即到在命令行中到redisInstall目录，
+执行redis-server --service-install redis.windows.conf ，然后到服务启动即可。
 4.启动ApplicationMain
