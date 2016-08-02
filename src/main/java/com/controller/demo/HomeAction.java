@@ -40,6 +40,4 @@ public class HomeAction extends LoggerInfo<HomeAction>{
         }
         return "index";
     }
-
-
 }
