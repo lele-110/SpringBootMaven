@@ -28,7 +28,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig extends CachingConfigurerSupport {
 
     /**
-     * 返回一个springBoot框架缓存对象
+     * 自定义返回策略，即按照什么方式返回
      *@author hefule
      *@date 2016/8/2 14:28
      *
