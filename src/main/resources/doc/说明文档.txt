@@ -1,6 +1,7 @@
 框架
 后端框架：springboot+redis+mysql
 前段框架：jQuery UI Bootstrap
+模板使用：Thymeleaf模板、velocity模板均可以
 
 目录划分
 1.resources全部是放配置文件的，包括mybatis的xml

@@ -50,17 +50,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!-- Thymeleaf模板-->
+        <!--Thymeleaf模板-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!--velocity模板-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-velocity</artifactId>
         </dependency>
         <!--支持使用 JDBC 访问数据库-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-        <!-- 热部署 -->
+        <!--spring-boot-test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--热部署 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>springloaded</artifactId>
@@ -82,7 +93,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- json引用-->
+        <!--json引用-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -101,7 +112,7 @@
     </dependencies>
     <build>
         <plugins>
-            <!-- spring boot项目编译插件 -->
+            <!--spring boot项目编译插件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
