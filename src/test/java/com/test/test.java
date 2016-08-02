@@ -3,7 +3,10 @@ package com.test;
 import org.junit.Test;
 
 /**
- * Created by hefule on 2016/7/31.
+ * 测试代码
+ *@author hefule
+ *@date 2016/8/2 13:17
+ *
  */
 public class test {
 
