@@ -1,0 +1,4 @@
+1.按照自己的mysql的数据库更改application.properties的数据源
+2.执行sql文件
+3.启动redisInstall下的redis-server.exe
+4.启动ApplicationMain
