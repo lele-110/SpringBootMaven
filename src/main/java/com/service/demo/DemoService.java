@@ -4,7 +4,7 @@ import com.mapper.demo.DemoMapper;
 import com.model.demo.Demo;
 import com.untils.framework.LoggerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,13 +29,13 @@ public class DemoService extends LoggerInfo<DemoService> {
     /**
      * 需要需要用到缓存时标记就好，
      * 查增时候使用  @Cacheable
-     * 当是改的时候 @cachePut
-     * 如果需要删除时候用CacheEvict
+     * 当是改的时候 @CachePut
+     * 如果需要删除时候用@CacheEvict 属性allEntries为true时清空所有
      *@author hefule
      *@date 2016/8/2 15:09
      *
      */
-    @Cacheable(value="userCache", keyGenerator = "wiselyKeyGenerator")
+    @CachePut(value="userCache", keyGenerator = "wiselyKeyGenerator")
     public Demo getUserInfo() throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
         return userMapper.findUserInfo();
