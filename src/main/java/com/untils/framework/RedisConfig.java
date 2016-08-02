@@ -28,7 +28,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig extends CachingConfigurerSupport {
 
     /**
-     * 自定义返回策略，即按照什么方式返回
+     * 自定义key返回策略，即按照什么方式返回
      *@author hefule
      *@date 2016/8/2 14:28
      *
@@ -39,6 +39,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         return (target, method, params) -> {
             StringBuilder sb = new StringBuilder();
             sb.append(target.getClass().getName());
+            sb.append(".");
             sb.append(method.getName());
             for (Object obj : params) {
                 sb.append(obj.toString());

@@ -1,5 +1,6 @@
 package com.controller.demo;
 
+import com.model.demo.Demo;
 import com.service.demo.DemoService;
 import com.untils.framework.LoggerInfo;
 import org.apache.logging.log4j.LogManager;
@@ -32,9 +33,8 @@ public class HomeAction extends LoggerInfo<HomeAction>{
         try {
             model.addAttribute("name","dddd");
             model.addAttribute("demo",demoService.getUserInfo());
-            redisUtil.writeObject("dddd","ddddd") ;
-            Object lin = redisUtil.loadObject("dddd");
-            System.out.println(lin);
+            Demo demo = (Demo) redisUtil.loadObject("getUserInfo");
+            System.out.println(demo.getName());
         } catch (Exception e) {
             e.printStackTrace();
         }
