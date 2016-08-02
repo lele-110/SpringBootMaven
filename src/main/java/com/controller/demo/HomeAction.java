@@ -1,6 +1,7 @@
-package com.controller;
+package com.controller.demo;
 
-import com.service.user.UserService;
+import com.service.demo.DemoService;
+import com.untils.framework.LoggerInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/")
-public class Home {
+public class HomeAction extends LoggerInfo<HomeAction>{
     //日志文件
-    private static Logger logger = LogManager.getLogger(Home.class);
+    private static Logger logger = LogManager.getLogger(HomeAction.class);
 
     @Autowired
-    private UserService userService;
+    private DemoService demoService;
 
     /**
      *   启动页
@@ -28,9 +29,10 @@ public class Home {
      */
     @RequestMapping("/index")
     public String index(Model model) {
-        model.addAttribute("name","dddd");
         try {
-            model.addAttribute("user",userService.findUserInfo());
+            model.addAttribute("name","dddd");
+            model.addAttribute("demo",demoService.getUserInfo());
+            System.out.println(redisUtil.loadAllKey());
         } catch (Exception e) {
             e.printStackTrace();
         }

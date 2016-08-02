@@ -1,11 +1,11 @@
-package com.model.user;
+package com.model.demo;
 
 import java.io.Serializable;
 
 /**
  * Created by hefule on 2016/7/31.
  */
-public class User implements Serializable{
+public class Demo implements Serializable{
     private final static long serialVersionUID = 1L;
 
     private Integer id;
