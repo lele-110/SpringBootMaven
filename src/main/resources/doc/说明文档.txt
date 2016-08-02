@@ -1,10 +1,12 @@
 框架
 后端框架：springboot+redis+mysql
 前段框架：jQuery UI Bootstrap
+
 目录划分
 1.resources全部是放配置文件的，包括mybatis的xml
 2.java/com里面都是放对应的类
 3.页面放到templates，静态文件例如js，css，images放到static
+
 项目运行
 1.按照自己的mysql的数据库更改application.properties的数据源
 2.执行sql文件
