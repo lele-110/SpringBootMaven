@@ -35,7 +35,7 @@ public class DemoService extends LoggerInfo<DemoService> {
      *@date 2016/8/2 15:09
      *
      */
-    @Cacheable("userCache")
+    @Cacheable(value="userCache", keyGenerator = "wiselyKeyGenerator")
     public Demo getUserInfo() throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
         return userMapper.findUserInfo();
