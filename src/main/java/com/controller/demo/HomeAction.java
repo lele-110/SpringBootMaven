@@ -3,8 +3,6 @@ package com.controller.demo;
 import com.model.demo.Demo;
 import com.service.demo.DemoService;
 import com.untils.framework.LoggerInfo;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class HomeAction extends LoggerInfo<HomeAction>{
-    //日志文件
-    private static Logger logger = LogManager.getLogger(HomeAction.class);
 
     @Autowired
     private DemoService demoService;

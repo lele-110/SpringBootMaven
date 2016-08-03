@@ -29,6 +29,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * 自定义key返回策略，即按照什么方式返回
+     * 只有当设置缓存没有key的时候使用
      *@author hefule
      *@date 2016/8/2 14:28
      *

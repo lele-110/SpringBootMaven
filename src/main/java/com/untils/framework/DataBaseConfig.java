@@ -1,8 +1,6 @@
 package com.untils.framework;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = "com.mapper")
-public class DataBaseConfig {
-    private final Logger log = LogManager.getLogger(DataBaseConfig.class);
+public class DataBaseConfig extends LoggerInfo<DataBaseConfig>{
+
     @Autowired
     private Environment env;
 
