@@ -111,6 +111,7 @@
         </dependency>
     </dependencies>
     <build>
+        <finalName>SpringBootWeb</finalName>
         <plugins>
             <!--spring boot项目编译插件 -->
             <plugin>
