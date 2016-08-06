@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by hefule on 2016/7/31.
  */
@@ -22,8 +24,8 @@ public class DemoService extends LoggerInfo<DemoService> {
      *  @date 2016/8/2 16:26
      *
      */
-    public Demo findUserInfo() throws Exception {
-        return userMapper.findUserInfo();
+    public List<Demo> findUserInfo() throws Exception {
+        return userMapper.loadModeForAll(new Demo());
     }
 
     /**
@@ -36,8 +38,8 @@ public class DemoService extends LoggerInfo<DemoService> {
      *  属性说明：value为缓存组，key为缓存key, wiselyKeyGenerator缓存策略（有key则不用）
      */
     @Cacheable(value="userCache",key = "#root.methodName")
-    public Demo getUserInfo() throws Exception {
+    public List<Demo> getUserInfo() throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
-        return userMapper.findUserInfo();
+        return userMapper.loadModeForAll(new Demo());
     }
 }

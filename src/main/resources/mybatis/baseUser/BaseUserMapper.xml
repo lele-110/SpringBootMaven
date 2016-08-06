@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.baseUser.BaseUserMapper">
+    <!--分页语句-->
+    <sql id="commonSqlStart">
+       SELECT * FROM (
+    </sql>
+    <sql id="commonSqlEnd">
+        ) LIMIT #{start},#{end}
+    </sql>
+
+   <!--查询所有用户-->
+    <select id="loadModeForAll" parameterType="com.model.baseUser.BaseUserBean" resultType="list">
+       SELECT * FROM base_user t
+       <where>
+           <if test="name!=null and name!=''">
+               AND t.name LIKE LIKE CONCAT('%',#{name},'%' )
+           </if>
+           <if test="isok!=null and isok!=''">
+               AND t.isok = #{isok}
+           </if>
+       </where>
+    </select>
+
+   <!--增加用户-->
+    <insert id="addModeForOne" keyProperty="id" parameterType="com.model.baseUser.BaseUserBean">
+       INSERT INTO base_user
+       (name,code,password,ctime,isok)
+       VALUES (#{name},#{code},#{password},#{ctime},#{isok})
+    </insert>
+</mapper>
