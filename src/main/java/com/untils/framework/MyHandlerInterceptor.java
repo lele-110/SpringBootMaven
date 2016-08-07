@@ -36,9 +36,8 @@ public class MyHandlerInterceptor extends WebMvcConfigurerAdapter {
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                                      Object handler) throws Exception {
                try{
-                    String basePath = ObjectUtils.basePath(request);
-                    if(!basePath.equals(redisUtil.loadObject("basePath")))
-                        redisUtil.writeObject("basePath", ObjectUtils.basePath(request));
+                    writeObject(request,"realPath",true);
+                    writeObject(request,"basePath",false);
                }catch (Exception e){
                    logger.error(e.getMessage(),e.getCause());
                    throw e;
@@ -58,6 +57,20 @@ public class MyHandlerInterceptor extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
         super.addResourceHandlers(registry);
+    }
+
+    /**
+     *  获取项目路径
+     *  @author hefule
+     *  @date 2016/8/8 2:00
+     *  @param request
+     *  @Param name 名稱
+     *  @param isPort 是否包含項目之前的路徑
+     */
+    private void writeObject(HttpServletRequest request,String name,boolean isPort) throws Exception {
+        String path = ObjectUtils.basePath(request,isPort);
+        if(!path.equals(redisUtil.loadObject(name)))
+            redisUtil.writeObject(name, path);
     }
 
 }

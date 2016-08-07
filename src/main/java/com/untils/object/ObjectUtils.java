@@ -34,20 +34,25 @@ public final class ObjectUtils {
     }
 
     /**
-     *  获取项目路径
+     *  获取项目路径(包含端口)
      *  @author hefule
      *  @date 2016/8/7 20:47
-     *
+     *  @param request
+     *  @param isPort 是否包含項目之前的路徑
      */
-    public static String basePath(HttpServletRequest request) throws Exception{
+    public static String basePath(HttpServletRequest request,boolean isPort) throws Exception{
         StringBuffer basePath = new StringBuffer();
-        basePath.append(request.getScheme());
-        basePath.append("://");
-        basePath.append(request.getServerName());
-        basePath.append(":");
-        basePath.append(request.getServerPort());
+        if(isPort){
+            basePath.append(request.getScheme());
+            basePath.append("://");
+            basePath.append(request.getServerName());
+            basePath.append(":");
+            basePath.append(request.getServerPort());
+        }
         basePath.append(request.getContextPath());
         basePath.append("/");
         return basePath.toString();
     }
+
+
 }
