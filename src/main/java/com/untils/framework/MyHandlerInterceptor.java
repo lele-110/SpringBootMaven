@@ -36,7 +36,8 @@ public class MyHandlerInterceptor extends WebMvcConfigurerAdapter {
             public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                                      Object handler) throws Exception {
                try{
-                   if(!redisUtil.exists("basePath"))
+                    String basePath = ObjectUtils.basePath(request);
+                    if(!basePath.equals(redisUtil.loadObject("basePath")))
                         redisUtil.writeObject("basePath", ObjectUtils.basePath(request));
                }catch (Exception e){
                    logger.error(e.getMessage(),e.getCause());
