@@ -38,6 +38,14 @@
         </RollingFile >
     </Appenders>
     <Loggers>
+        <Logger name="org.apache.log4j.xml" level="INFO"/>
+        <Logger name="org.springframework" level="ERROR"/>
+        <Logger name="com.mybatis" level="WARN"/>
+        <Logger name="org.mybatis.spring.mapper" level="WARN"/>
+        <Logger name="java.sql" level="DEBUG"/>
+        <Logger name="org.thymeleaf" level="WARN"/>
+        <Logger name="org.hibernate" level="WARN"/>
+        <Logger name="org.apache.velocity" level="WARN"/>
         <Root level="debug">
             <AppenderRef ref="Console" />
             <AppenderRef ref="app_debug" />
