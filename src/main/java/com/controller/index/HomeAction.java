@@ -1,22 +1,22 @@
-package com.controller.demo;
+package com.controller.index;
 
 import com.service.demo.DemoService;
 import com.untils.framework.LoggerInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
 
 /**
  * Created by hefule on 2016/7/31.
  */
 @Controller
 @RequestMapping("/")
-public class HomeAction extends LoggerInfo<HomeAction>{
+public class HomeAction extends LoggerInfo<HomeAction> {
 
-    @Autowired
+    @Resource(name = "demoService")
     private DemoService demoService;
-
     /**
      *   启动页
      *@author hefule
@@ -27,7 +27,7 @@ public class HomeAction extends LoggerInfo<HomeAction>{
     //@ResponseBody  如果需要返回json则添加
     public String index(Model model) {
         try {
-            model.addAttribute("name","dddd");
+            System.out.println(redisUtil.loadObject("basePath"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,11 +44,11 @@ public class HomeAction extends LoggerInfo<HomeAction>{
     public EmbeddedServletContainerCustomizer containerCustomizer() {
 
         return (container -> {
-          *//*  ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
+            ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
             ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.html");
             ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
 
-            container.addErrorPages(error401Page, error404Page, error500Page);*//*
+            container.addErrorPages(error401Page, error404Page, error500Page);
         });
     }*/
 }

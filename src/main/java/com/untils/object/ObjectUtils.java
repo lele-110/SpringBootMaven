@@ -2,6 +2,8 @@ package com.untils.object;
 
 import com.alibaba.fastjson.JSONObject;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by hefule on 2016/8/2.
  */
@@ -29,5 +31,23 @@ public final class ObjectUtils {
          if(o==null || o.equals(""))
              return "对象为空";
          return JSONObject.toJSONString(o);
+    }
+
+    /**
+     *  获取项目路径
+     *  @author hefule
+     *  @date 2016/8/7 20:47
+     *
+     */
+    public static String basePath(HttpServletRequest request) throws Exception{
+        StringBuffer basePath = new StringBuffer();
+        basePath.append(request.getScheme());
+        basePath.append("://");
+        basePath.append(request.getServerName());
+        basePath.append(":");
+        basePath.append(request.getServerPort());
+        basePath.append(request.getContextPath());
+        basePath.append("/");
+        return basePath.toString();
     }
 }

@@ -3,10 +3,11 @@ package com.service.demo;
 import com.mapper.demo.DemoMapper;
 import com.model.demo.Demo;
 import com.untils.framework.LoggerInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
 @Service("demoService")
 public class DemoService extends LoggerInfo<DemoService> {
 
-    @Autowired
+    @Resource(name = "demoMapper")
     private DemoMapper userMapper;
 
     /**
@@ -37,9 +38,10 @@ public class DemoService extends LoggerInfo<DemoService> {
      *@date 2016/8/2 15:09
      *  属性说明：value为缓存组，key为缓存key, wiselyKeyGenerator缓存策略（有key则不用）
      */
-    @CachePut(value="userCache",key = "#root.methodName")
-    public List<Demo> getUserInfo() throws Exception {
+    @Cacheable(value="userCache",key = "#bs")
+    public List<Demo> getUserInfo(String bs) throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
-        return userMapper.loadModeForAll(new Demo());
+        /*return userMapper.loadModeForAll(new Demo());*/
+        return new ArrayList<Demo>(6);
     }
 }
