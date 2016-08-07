@@ -4,7 +4,7 @@ import com.mapper.demo.DemoMapper;
 import com.model.demo.Demo;
 import com.untils.framework.LoggerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,7 +37,7 @@ public class DemoService extends LoggerInfo<DemoService> {
      *@date 2016/8/2 15:09
      *  属性说明：value为缓存组，key为缓存key, wiselyKeyGenerator缓存策略（有key则不用）
      */
-    @Cacheable(value="userCache",key = "#root.methodName")
+    @CachePut(value="userCache",key = "#root.methodName")
     public List<Demo> getUserInfo() throws Exception {
         System.out.println("无缓存的时候调用这里---数据库查询");
         return userMapper.loadModeForAll(new Demo());

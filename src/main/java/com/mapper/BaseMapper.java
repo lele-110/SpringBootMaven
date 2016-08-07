@@ -1,5 +1,6 @@
 package com.mapper;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * Created by hefule on 2016/8/6 16:13.
  */
+@Repository
 public interface BaseMapper<T> {
 
     /**

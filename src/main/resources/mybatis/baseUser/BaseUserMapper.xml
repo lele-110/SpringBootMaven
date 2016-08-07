@@ -9,7 +9,7 @@
     </sql>
 
    <!--查询所有用户-->
-    <select id="loadModeForAll" parameterType="com.model.baseUser.BaseUserBean" resultType="list">
+    <select id="loadModeForAll" parameterType="com.model.baseUser.BaseUserBean" resultType="com.model.baseUser.BaseUserBean">
        SELECT * FROM base_user t
        <where>
            <if test="name!=null and name!=''">
@@ -22,9 +22,8 @@
     </select>
 
    <!--增加用户-->
-    <insert id="addModeForOne" keyProperty="id" parameterType="com.model.baseUser.BaseUserBean">
-       INSERT INTO base_user
-       (name,code,password,ctime,isok)
-       VALUES (#{name},#{code},#{password},#{ctime},#{isok})
+    <insert id="addModeForOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.model.baseUser.BaseUserBean">
+       INSERT INTO base_user(name,code,password,ctime,isok)
+       (SELECT #{name},#{code},#{password},#{ctime},#{isok} FROM dual WHERE NOT EXISTS (select 1 from base_user where code =#{code}))
     </insert>
 </mapper>

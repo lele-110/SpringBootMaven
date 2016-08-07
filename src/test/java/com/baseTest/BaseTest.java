@@ -1,6 +1,7 @@
 package com.baseTest;
 
 import com.ApplicationMain;
+import com.untils.framework.LoggerInfo;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -15,4 +16,4 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ApplicationMain.class)
 @WebAppConfiguration
-public class BaseTest {}
+public class BaseTest extends LoggerInfo<BaseTest>{}

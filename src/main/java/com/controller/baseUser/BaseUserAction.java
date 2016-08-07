@@ -4,10 +4,11 @@ import com.model.baseUser.BaseUserBean;
 import com.service.baseuser.BaseUserService;
 import com.untils.framework.LoggerInfo;
 import com.untils.object.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.untils.object.ResultMsBean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
 @RequestMapping("/baseUser")
 public class BaseUserAction extends LoggerInfo<BaseUserAction> {
 
-    @Autowired
+    @Resource(name="baseUserService")
     private BaseUserService baseUserService;
 
     /**
@@ -29,13 +30,13 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
      */
     @RequestMapping("/addModeForOne")
     public String addModeForOne(){
-        BaseUserBean baseUserBean = new BaseUserBean();
+        ResultMsBean resultMsBean =null;
         try {
-            baseUserService.addModeForOne(baseUserBean);
+             resultMsBean = this.baseUserService.addModeForOne(new BaseUserBean());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ObjectUtils.objToJson(baseUserBean);
+        return ObjectUtils.objToJson(resultMsBean);
     }
 
     /**
@@ -48,7 +49,7 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
     public String loadModeForAll(){
         List<BaseUserBean> t =null;
         try {
-            t= baseUserService.loadModeForAll(new BaseUserBean());
+            t= this.baseUserService.loadModeForAll(new BaseUserBean());
         } catch (Exception e) {
             e.printStackTrace();
         }

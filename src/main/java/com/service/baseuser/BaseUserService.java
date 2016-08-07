@@ -3,9 +3,12 @@ package com.service.baseuser;
 import com.mapper.baseUser.BaseUserMapper;
 import com.model.baseUser.BaseUserBean;
 import com.untils.framework.LoggerInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.untils.object.ResultMsBean;
+import com.untils.object.TimeUtils;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,7 +18,7 @@ import java.util.List;
 @Service("baseUserService")
 public class BaseUserService extends LoggerInfo<BaseUserService> {
 
-    @Autowired
+    @Resource(name = "baseUserMapper")
     private BaseUserMapper baseUserMapper;
 
     /**
@@ -34,7 +37,22 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
      *  @date 2016/8/6 17:47
      *  @param t 基础用户实体
      */
-    public void  addModeForOne(BaseUserBean t) throws Exception{
-         this.baseUserMapper.addModeForOne(t);
+    public ResultMsBean addModeForOne(BaseUserBean t) throws Exception{
+        ResultMsBean resultMsBean = new ResultMsBean();
+        try{
+            t.setName("何富乐");
+            t.setCode("admin");
+            t.setPassword("123456");
+            t.setCtime(TimeUtils.DateToString(new Date()));
+            t.setIsok(0);
+            this.baseUserMapper.addModeForOne(t);
+            if(t.getId()==null){
+                resultMsBean.setSuccess(false);
+                resultMsBean.setMessage("该账号已经存在");
+            }
+        }catch (Exception e){
+            resultMsBean.setExMessage(e.getMessage());
+        }
+        return  resultMsBean;
     }
 }
