@@ -27,7 +27,7 @@ public class HomeAction extends LoggerInfo<HomeAction> {
     //@ResponseBody  如果需要返回json则添加
     public String index(Model model) {
         try {
-           model.addAttribute("basePath",redisUtil.loadObject("basePath"));
+           model.addAttribute("basePath",redisUtil.loadObject("realPath"));
         } catch (Exception e) {
             e.printStackTrace();
         }

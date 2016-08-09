@@ -21,6 +21,7 @@
     <link th:href="${basePath}+'assets/global/css/components-rounded.min.css'" rel="stylesheet" id="style_components" type="text/css" />
     <link th:href="${basePath}+'assets/global/css/plugins.min.css'" rel="stylesheet" type="text/css" />
     <link th:href="${basePath}+'assets/pages/css/login.min.css'" rel="stylesheet" type="text/css" />
+    <link th:href="${basePath}+'assets/pages/css/coming-soon.min.css'" rel="stylesheet" type="text/css" />
 </head>
 <body class="login">
 <div class="menu-toggler sidebar-toggler"></div>
@@ -37,7 +38,7 @@
         <h3 class="form-title font-green">Sign In</h3>
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
-            <span> 请填写你的用户名和密码. </span>
+            <span> 请填写你的用户名或者密码. </span>
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">用户名</label>
@@ -49,7 +50,7 @@
             <button type="submit" class="btn green uppercase">登陆</button>
             <label class="rememberme check">
                 <input type="checkbox" name="remember" value="1" />记住我 </label>
-            <a href="javascript:;" id="forget-password" class="forget-password">忘记密码?</a>
+            <a href="javascript:;" id="forget-password" class="forget-password form-title font-green">忘记密码?</a>
         </div>
         <div class="login-options">
             <h4>通过别的方式登陆-->>></h4>
@@ -148,11 +149,14 @@
 <script th:src="${basePath}+'assets/global/plugins/select2/js/select2.full.min.js'" type="text/javascript"></script>
 <script th:src="${basePath}+'assets/global/scripts/app.min.js'" type="text/javascript"></script>
 <script th:src="${basePath}+'assets/pages/scripts/login.min.js'" type="text/javascript"></script>
+<script th:src="${basePath}+'assets/global/plugins/countdown/jquery.countdown.min.js'" type="text/javascript"></script>
+<script th:src="${basePath}+'assets/global/plugins/backstretch/jquery.backstretch.min.js'" type="text/javascript"></script>
+<script th:src="${basePath}+'assets/pages/scripts/coming-soon.min.js'" type="text/javascript"></script>
 
 <script type="text/javascript">
-   /* $(".forget-form").submit(function(){
-       alert($("input[name='email']").val());
-    });*/
+    $(".forget-form").submit(function(){
+        $(this).validate();
+    });
 </script>
 </body>
 </html>
