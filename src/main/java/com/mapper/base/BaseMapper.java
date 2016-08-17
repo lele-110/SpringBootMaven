@@ -37,6 +37,16 @@ public class BaseMapper<T> extends LoggerInfo<BaseMapper> {
     }
 
     /**
+     *  查询全部公用类
+     *  @author hefule
+     *  @date 2016/8/6 16:14
+     *  @param t 实体类
+     */
+    public List<Map<String,Object>> loadModeForAllMap(T t) throws Exception {
+        return sqlSession().selectList(BaseMapper.class.getName()+".loadModeForAll",t);
+    }
+
+    /**
      *  分页查询公用类
      *  @author hefule
      *  @date 2016/8/6 16:17
@@ -45,6 +55,16 @@ public class BaseMapper<T> extends LoggerInfo<BaseMapper> {
     public List<T> loadModeForList(T t) throws Exception {
         List<Map<String,Object>> _list = sqlSession().selectList(BaseMapper.class.getName()+".loadModeForList",t);
         return new MapTOBean<T>().mapToT(_list,t);
+    }
+
+    /**
+     *  分页查询公用类
+     *  @author hefule
+     *  @date 2016/8/6 16:17
+     *  @param t 实体类
+     */
+    public List<Map<String,Object>> loadModeForListMap(T t) throws Exception {
+       return sqlSession().selectList(BaseMapper.class.getName()+".loadModeForList",t);
     }
 
     /**
@@ -66,6 +86,16 @@ public class BaseMapper<T> extends LoggerInfo<BaseMapper> {
     public T loadModeForOne(T t) throws Exception {
         Map<String,Object> _para  = sqlSession().selectOne(BaseMapper.class.getName()+".loadModeForOne", t);
         return new MapTOBean<T>(_para,t).getT();
+    }
+
+    /**
+     *  查询单个类
+     *  @author hefule
+     *  @date 2016/8/6 16:15
+     *  @param t 实体类
+     */
+    public Map<String,Object> loadModeForOneMap(T t) throws Exception {
+       return sqlSession().selectOne(BaseMapper.class.getName()+".loadModeForOne", t);
     }
 
     /**
