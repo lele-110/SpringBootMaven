@@ -4,11 +4,9 @@ import com.mapper.baseUser.BaseUserMapper;
 import com.model.baseUser.BaseUserBean;
 import com.untils.framework.LoggerInfo;
 import com.untils.object.ResultMsBean;
-import com.untils.object.TimeUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,16 +38,7 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
     public ResultMsBean addModeForOne(BaseUserBean t) throws Exception{
         ResultMsBean resultMsBean = new ResultMsBean();
         try{
-            t.setName("何富乐");
-            t.setCode("admin");
-            t.setPassword("123456");
-            t.setCtime(TimeUtils.DateToString(new Date()));
-            t.setIsok(0);
-            //this.baseUserMapper.addModeForOne();
-            if(t.getId()==null){
-                resultMsBean.setSuccess(false);
-                resultMsBean.setMessage("该账号已经存在");
-            }
+            System.out.println(this.baseUserMapper.addModeForOne());
         }catch (Exception e){
             resultMsBean.setExMessage(e.getMessage());
         }

@@ -2,9 +2,12 @@ package com.mapper.baseUser;
 
 import com.mapper.base.BaseMapper;
 import com.untils.framework.LoggerInfo;
+import com.untils.object.TimeUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,5 +29,19 @@ public class BaseUserMapper extends LoggerInfo<BaseUserMapper> {
           StringBuilder stringBuilder = new StringBuilder();
           stringBuilder.append("select * from base_user");
           return baseMapper.loadModeForAll(stringBuilder.toString());
+    }
+
+    public Long addModeForOne() throws Exception {
+          StringBuilder builder = new StringBuilder();
+          builder.append("insert into base_user(name,code,password,ctime,isok)");
+          builder.append("select '何富乐',");
+          builder.append("'admin',");
+          builder.append("'123456',");
+          builder.append("'"+TimeUtils.DateToString(new Date())+"',");
+          builder.append("'0' from dual where not exists (select 1 from base_user where code='admin')");
+          List<String> list = new ArrayList<String>();
+          list.add(builder.toString());
+          list.add(builder.toString());
+          return baseMapper.addModeForBatch(list);
     }
 }

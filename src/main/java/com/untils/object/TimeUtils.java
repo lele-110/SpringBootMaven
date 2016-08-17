@@ -15,9 +15,8 @@ public final class TimeUtils {
      *  @date 2016/8/7 9:43
      *  @param date 时间
      */
-    public static Date DateToString(Date date) throws Exception{
+    public static String DateToString(Date date) throws Exception{
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time =  sim.format(date);
-        return sim.parse(time);
+        return sim.format(date);
     }
 }
