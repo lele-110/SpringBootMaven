@@ -1,6 +1,6 @@
 package com.model.baseUser;
 
-import com.model.BaseBean;
+import com.model.base.BaseBean;
 
 /**
  * 基本用户类

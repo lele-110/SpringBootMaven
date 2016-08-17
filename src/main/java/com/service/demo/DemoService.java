@@ -26,7 +26,7 @@ public class DemoService extends LoggerInfo<DemoService> {
      *
      */
     public List<Demo> findUserInfo() throws Exception {
-        return userMapper.loadModeForAll(new Demo());
+        return null;
     }
 
     /**

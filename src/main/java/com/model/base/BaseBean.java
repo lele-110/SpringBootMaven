@@ -1,4 +1,4 @@
-package com.model;
+package com.model.base;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -66,6 +66,14 @@ public class BaseBean implements Serializable {
      *
      */
      protected Long end;
+
+    /**
+     *  公用分页sql
+     *  @author hefule
+     *  @date 2016/8/17 15:56
+     *
+     */
+     protected StringBuilder stringBuilder;
 
 
     public Long getId() {
@@ -143,4 +151,14 @@ public class BaseBean implements Serializable {
     public void setEnd(Long end) {
         this.end = end;
     }
+
+    public StringBuilder getStringBuilder() {
+        this.stringBuilder.append("select * from ( ");
+        return stringBuilder;
+    }
+
+    public void setStringBuilder(StringBuilder stringBuilder) {
+        this.stringBuilder =  getStringBuilder().append(stringBuilder).append(" ) limit ").append(getStart()).append(",").append(getEnd());
+    }
+
 }

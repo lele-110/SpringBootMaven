@@ -1,7 +1,6 @@
 package com.mapper.demo;
 
-import com.mapper.BaseMapper;
-import com.model.demo.Demo;
+import com.untils.framework.LoggerInfo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Created by hefule on 2016/7/31.
  */
 @Repository("demoMapper")
-public interface DemoMapper extends BaseMapper<Demo>{
+public class DemoMapper extends LoggerInfo<DemoMapper> {
 
 }

@@ -18,7 +18,7 @@ import java.util.List;
 @Service("baseUserService")
 public class BaseUserService extends LoggerInfo<BaseUserService> {
 
-    @Resource(name = "baseUserMapper")
+    @Resource(name = "baseUseMapper")
     private BaseUserMapper baseUserMapper;
 
     /**
@@ -28,7 +28,7 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
      *  @param t 基础用户实体
      */
     public List<BaseUserBean> loadModeForAll(BaseUserBean t) throws Exception{
-        return this.baseUserMapper.loadModeForAll(t);
+        return this.baseUserMapper.loadModeForAll();
     }
     
     /**
@@ -45,7 +45,7 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
             t.setPassword("123456");
             t.setCtime(TimeUtils.DateToString(new Date()));
             t.setIsok(0);
-            this.baseUserMapper.addModeForOne(t);
+            //this.baseUserMapper.addModeForOne();
             if(t.getId()==null){
                 resultMsBean.setSuccess(false);
                 resultMsBean.setMessage("该账号已经存在");
