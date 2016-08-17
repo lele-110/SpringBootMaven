@@ -282,6 +282,6 @@ public class DESCryptUtil {
 		String s = getEncrypData("123456");
 		System.out.println(s);
 		
-		System.out.println(getDecodeData("QKRFFlIHeB91IHSdSSMJ7W4+k+oX811n"));
+		System.out.println(getDecodeData("5auNALYnHYo="));
 	}
 }

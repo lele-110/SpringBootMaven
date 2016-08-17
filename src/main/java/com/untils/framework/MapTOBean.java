@@ -51,8 +51,10 @@ public final class MapTOBean<T> {
             PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
             for (PropertyDescriptor property : propertyDescriptors) {
                 String key = property.getName();
-                if (para.containsKey(key)) {
+                if (para.containsKey(key)||para.containsKey(key.toLowerCase())||para.containsKey(key.toUpperCase())) {
                     Object value = para.get(key);
+                    if(value==null) value = para.get(key.toLowerCase());
+                    if(value==null) value = para.get(key.toUpperCase());
                     Method getter = property.getReadMethod();
                     // 得到property对应的setter方法
                     Method setter = property.getWriteMethod();
