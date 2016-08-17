@@ -76,7 +76,7 @@ public class BaseBean implements Serializable {
      protected StringBuilder stringBuilder = new StringBuilder();
 
     /**
-     * 公用sql参数
+     * 公用sql参数,即最终执行的参数
      *  @author hefule
      *  @date 2016/8/18 0:02
      *
@@ -136,6 +136,21 @@ public class BaseBean implements Serializable {
         return start;
     }
 
+    public Long getNum() {
+        return num;
+    }
+
+    public void setNum(Long num) {
+        this.num = num;
+    }
+
+    public String getSql() {
+        return sql;
+    }
+
+    public void setSql(String sql) {
+        this.sql = sql;
+    }
     /**
      *  根据分页数和总数设置开始行数和结束行数
      *  @author hefule
@@ -152,13 +167,6 @@ public class BaseBean implements Serializable {
         this.num = num;
     }
 
-    public Long getNum() {
-        return num;
-    }
-
-    public void setNum(Long num) {
-        this.num = num;
-    }
     /**
      *  分页字符串
      *  @author hefule
@@ -185,11 +193,24 @@ public class BaseBean implements Serializable {
             this.stringBuilder = stringBuilder;
     }
 
-    public String getSql() {
-        return sql;
-    }
-
-    public void setSql(String sql) {
-        this.sql = sql;
+    private int nowPosition = 0;
+    /**
+     *  增加属性即为使用带有?的sql语句添加值
+     *  @author hefule
+     *  @date 2016/8/18 2:06
+     *  @param obj 数值
+     */
+    public void addParam(Object... obj){
+        for(Object o : obj){
+            String _lin = o.toString();
+            for(int i=nowPosition;i<getSql().length();i++){
+                char c = getSql().charAt(i);
+                if(c=='?'){
+                    setSql(getSql().replaceFirst("\\?","'"+_lin+"'"));
+                    nowPosition = i+_lin.length()+1;
+                    break;
+                }
+            }
+        }
     }
 }

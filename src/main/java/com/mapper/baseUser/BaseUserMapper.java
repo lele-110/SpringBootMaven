@@ -31,17 +31,9 @@ public class BaseUserMapper extends LoggerInfo<BaseUserMapper> {
     }
 
     public Long addModeForOne(BaseUserBean baseUserBean) throws Exception {
-          StringBuilder builder = baseUserBean.getStringBuilder(false);
-          builder.append("insert into base_user(name,code,password,ctime,isok)");
-          builder.append("select '何富乐',");
-          builder.append("'admin',");
-          builder.append("'123456',");
-          builder.append("'"+TimeUtils.DateToString(new Date())+"',");
-          builder.append("'0' from dual where not exists (select 1 from base_user where code='admin')");
-         /* List<String> list = new ArrayList<String>();
-          list.add(builder.toString());
-          list.add(builder.toString());*/
-          baseUserBean.setSql(builder.toString());
+          baseUserBean.setSql("insert into base_user(name,code,password,ctime,isok)(select ?,?,?,?,? from dual where not exists (select 1 from base_user where code=?));");
+          baseUserBean.addParam("何富乐");
+          baseUserBean.addParam("admin","123456",TimeUtils.DateToString(new Date()),0,"admin");
           return baseMapper.addModeForOne(baseUserBean);
     }
 
