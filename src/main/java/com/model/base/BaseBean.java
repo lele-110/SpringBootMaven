@@ -65,7 +65,7 @@ public class BaseBean implements Serializable {
      *  @date 2016/8/6 16:54
      *
      */
-     protected Long end;
+     protected Long num;
 
     /**
      *  公用分页sql
@@ -73,7 +73,15 @@ public class BaseBean implements Serializable {
      *  @date 2016/8/17 15:56
      *
      */
-     protected StringBuilder stringBuilder;
+     protected StringBuilder stringBuilder = new StringBuilder();
+
+    /**
+     * 公用sql参数
+     *  @author hefule
+     *  @date 2016/8/18 0:02
+     *
+     */
+     protected String sql;
 
 
     public Long getId() {
@@ -141,24 +149,47 @@ public class BaseBean implements Serializable {
         if(num==null || num<=0)
             num=10L;
         this.start = (pageNum-1)*num;
-        setEnd(pageNum*num);
+        this.num = num;
     }
 
-    public Long getEnd() {
-        return end;
+    public Long getNum() {
+        return num;
     }
 
-    public void setEnd(Long end) {
-        this.end = end;
+    public void setNum(Long num) {
+        this.num = num;
     }
-
-    public StringBuilder getStringBuilder() {
-        this.stringBuilder.append("select * from ( ");
+    /**
+     *  分页字符串
+     *  @author hefule
+     *  @date 2016/8/18 0:15
+     *  @param isPage
+     *
+     */
+    public StringBuilder getStringBuilder(Boolean isPage) {
+        if(isPage) this.stringBuilder.append("select * from ( ");
         return stringBuilder;
     }
 
-    public void setStringBuilder(StringBuilder stringBuilder) {
-        this.stringBuilder =  getStringBuilder().append(stringBuilder).append(" ) limit ").append(getStart()).append(",").append(getEnd());
+    /**
+     *  分页字符串
+     *  @author hefule
+     *  @date 2016/8/18 0:15
+     *  @param isPage
+     *
+     */
+    public void setStringBuilder(StringBuilder stringBuilder,Boolean isPage) {
+        if(isPage)
+            this.stringBuilder =  getStringBuilder(isPage).append(stringBuilder).append(" )lele limit ").append(getStart()).append(",").append(getNum());
+        else
+            this.stringBuilder = stringBuilder;
     }
 
+    public String getSql() {
+        return sql;
+    }
+
+    public void setSql(String sql) {
+        this.sql = sql;
+    }
 }

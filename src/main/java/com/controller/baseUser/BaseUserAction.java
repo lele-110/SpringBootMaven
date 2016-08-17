@@ -32,7 +32,7 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
     public String addModeForOne(){
         ResultMsBean resultMsBean =null;
         try {
-             resultMsBean = this.baseUserService.addModeForOne(new BaseUserBean());
+             resultMsBean = baseUserService.addModeForOne(new BaseUserBean());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
     public String loadModeForAll(){
         List<BaseUserBean> t =null;
         try {
-            t= this.baseUserService.loadModeForAll(new BaseUserBean());
+            t= baseUserService.loadModeForAll(new BaseUserBean());
         } catch (Exception e) {
             e.printStackTrace();
         }

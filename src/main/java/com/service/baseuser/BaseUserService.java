@@ -26,7 +26,7 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
      *  @param t 基础用户实体
      */
     public List<BaseUserBean> loadModeForAll(BaseUserBean t) throws Exception{
-        return this.baseUserMapper.loadModeForAll();
+        return baseUserMapper.loadModeForAll(t);
     }
     
     /**
@@ -38,7 +38,13 @@ public class BaseUserService extends LoggerInfo<BaseUserService> {
     public ResultMsBean addModeForOne(BaseUserBean t) throws Exception{
         ResultMsBean resultMsBean = new ResultMsBean();
         try{
-            System.out.println(this.baseUserMapper.addModeForOne());
+            System.out.println(baseUserMapper.addModeForOne(t));
+            System.out.println(t.getId());
+            if(t.getId()==null){
+                resultMsBean.setSuccess(false);
+                resultMsBean.setMessage("该账号已经存在");
+            }
+           // System.out.println(baseUserMapper.deleteForOne(t));
         }catch (Exception e){
             resultMsBean.setExMessage(e.getMessage());
         }
