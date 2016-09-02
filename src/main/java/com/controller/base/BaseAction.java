@@ -10,6 +10,7 @@ import java.io.Serializable;
  * 基础action公用类
  * Created by hefule on 2016/9/2 14:33.
  */
+@Configuration
 @Controller
 public class BaseAction extends LoggerInfo<BaseAction,Serializable> {
 

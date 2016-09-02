@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 重写BasicErrorController,主要负责系统的异常页面的处理以及错误信息的显示
  * Created by hefule on 2016/9/2 14:48.
  */
+@Configuration
 @Controller
 @RequestMapping(value = "/error")
 public class ExceptionController {
