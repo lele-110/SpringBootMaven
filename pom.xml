@@ -34,6 +34,11 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
+                <!--去掉安全设置引用-->
+               <exclusion>
+                     <groupId>org.springframework.boot</groupId>
+                     <artifactId>spring-boot-starter-security</artifactId>
+               </exclusion>
             </exclusions>
         </dependency>
         <!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
@@ -46,21 +51,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-        <!--安全设置引用-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
         <!--Thymeleaf模板-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-      <!-- &lt;!&ndash; velocity模板&ndash;&gt;
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-velocity</artifactId>
-        </dependency>-->
         <!--支持使用 JDBC 访问数据库-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -116,8 +111,29 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-redis</artifactId>
         </dependency>
-       <!-- &lt;!&ndash;打包时候需要限制指定容器&ndash;&gt;
+        <!-- 文件上传 -->
         <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <!--poi-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.14</version>
+        </dependency>
+        <!-- velocity模板-->
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-velocity</artifactId>
+         </dependency>-->
+        <!--安全设置引用-->
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-security</artifactId>
+         </dependency>-->
+         <!--打包时候需要限制指定容器-->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>

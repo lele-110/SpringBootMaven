@@ -17,7 +17,7 @@ import java.util.List;
  * Created by hefule on 2016/8/6 17:53.
  */
 @RestController
-@RequestMapping("/baseUser")
+@RequestMapping("/admin/baseUser")
 public class BaseUserAction extends LoggerInfo<BaseUserAction,Serializable> {
 
     @Resource(name="baseUserService")
