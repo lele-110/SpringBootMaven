@@ -1,12 +1,13 @@
-package com.mapper.baseUser;
+package com.mapper.admin.baseUser;
 
 import com.mapper.base.BaseMapper;
-import com.model.baseUser.BaseUserBean;
+import com.model.admin.baseUser.BaseUserBean;
 import com.untils.framework.LoggerInfo;
 import com.untils.object.TimeUtils;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * Created by hefule on 2016/7/31.
  */
 @Repository("baseUseMapper")
-public class BaseUserMapper extends LoggerInfo<BaseUserMapper> {
+public class BaseUserMapper extends LoggerInfo<BaseUserMapper,Serializable> {
 
     @Resource(name = "baseMapper")
     private BaseMapper<BaseUserBean> baseMapper;
@@ -38,7 +39,8 @@ public class BaseUserMapper extends LoggerInfo<BaseUserMapper> {
     }
 
     public Long deleteForOne(BaseUserBean baseUserBean) throws Exception {
-         baseUserBean.setSql("delete from base_user where id="+baseUserBean.getId());
+         baseUserBean.setSql("delete from base_user where id=?");
+         baseUserBean.addParam(baseUserBean.getId());
          return baseMapper.delModeForOne(baseUserBean);
     }
 }

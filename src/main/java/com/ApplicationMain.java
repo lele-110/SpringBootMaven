@@ -26,7 +26,12 @@ public class ApplicationMain extends SpringBootServletInitializer {
      */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(applicationClass);
+        try{
+            return builder.sources(applicationClass);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+        }
+            return null;
     }
 
     /**

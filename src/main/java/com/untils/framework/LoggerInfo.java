@@ -9,9 +9,11 @@ import javax.annotation.Resource;
  * 日志公用类
  * Created by hefule on 2016/8/2.
  */
-public class LoggerInfo<T> {
+public class LoggerInfo<T,Serializable> {
     @Resource(name="redisUtil")
     protected RedisUtil redisUtil;
+
+    private final static long serialVersionUID = 1L;
     //日志私有属性
     protected Logger logger;
     public LoggerInfo(){}

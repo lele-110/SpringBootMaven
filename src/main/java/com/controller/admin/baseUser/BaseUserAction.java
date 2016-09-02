@@ -1,7 +1,7 @@
-package com.controller.baseUser;
+package com.controller.admin.baseUser;
 
-import com.model.baseUser.BaseUserBean;
-import com.service.baseuser.BaseUserService;
+import com.model.admin.baseUser.BaseUserBean;
+import com.service.admin.baseUser.BaseUserService;
 import com.untils.framework.LoggerInfo;
 import com.untils.object.ObjectUtils;
 import com.untils.object.ResultMsBean;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/baseUser")
-public class BaseUserAction extends LoggerInfo<BaseUserAction> {
+public class BaseUserAction extends LoggerInfo<BaseUserAction,Serializable> {
 
     @Resource(name="baseUserService")
     private BaseUserService baseUserService;
@@ -34,7 +35,7 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
         try {
              resultMsBean = baseUserService.addModeForOne(new BaseUserBean());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         return ObjectUtils.objToJson(resultMsBean);
     }
@@ -51,7 +52,7 @@ public class BaseUserAction extends LoggerInfo<BaseUserAction> {
         try {
             t= baseUserService.loadModeForAll(new BaseUserBean());
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         return ObjectUtils.objToJson(t);
     }

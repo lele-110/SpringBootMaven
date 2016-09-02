@@ -14,6 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.io.Serializable;
 
 /**
  * 数据源，在初始化完成之后会生成sqlSessionFactoryBean注入到mybatis
@@ -22,7 +23,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 //@MapperScan(basePackages = "com.mapper")
-public class DataBaseConfig extends LoggerInfo<DataBaseConfig>{
+public class DataBaseConfig extends LoggerInfo<DataBaseConfig,Serializable>{
 
     @Autowired
     private Environment env;

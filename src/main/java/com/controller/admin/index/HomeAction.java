@@ -1,4 +1,4 @@
-package com.controller.index;
+package com.controller.admin.index;
 
 import com.service.demo.DemoService;
 import com.untils.framework.LoggerInfo;
@@ -7,13 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 
 /**
  * Created by hefule on 2016/7/31.
  */
 @Controller
 @RequestMapping("/")
-public class HomeAction extends LoggerInfo<HomeAction> {
+public class HomeAction extends LoggerInfo<HomeAction,Serializable> {
 
     @Resource(name = "demoService")
     private DemoService demoService;
@@ -29,7 +30,7 @@ public class HomeAction extends LoggerInfo<HomeAction> {
         try {
            model.addAttribute("basePath",redisUtil.loadObject("realPath"));
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage(),e);
         }
         return "index";
     }

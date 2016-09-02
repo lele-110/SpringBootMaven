@@ -1,4 +1,4 @@
-package com.model.demo;
+package com.model.admin.demo;
 
 import java.io.Serializable;
 

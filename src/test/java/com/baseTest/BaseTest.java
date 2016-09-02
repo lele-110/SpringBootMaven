@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.io.Serializable;
+
 /**
  * 测试代码基本类
  *@author hefule
@@ -16,4 +18,4 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = ApplicationMain.class)
 @WebAppConfiguration
-public class BaseTest extends LoggerInfo<BaseTest>{}
+public class BaseTest extends LoggerInfo<BaseTest,Serializable>{}

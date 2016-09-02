@@ -1,12 +1,13 @@
-package com.service.baseuser;
+package com.service.admin.baseUser;
 
-import com.mapper.baseUser.BaseUserMapper;
-import com.model.baseUser.BaseUserBean;
+import com.mapper.admin.baseUser.BaseUserMapper;
+import com.model.admin.baseUser.BaseUserBean;
 import com.untils.framework.LoggerInfo;
 import com.untils.object.ResultMsBean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by hefule on 2016/8/6 16:45.
  */
 @Service("baseUserService")
-public class BaseUserService extends LoggerInfo<BaseUserService> {
+public class BaseUserService extends LoggerInfo<BaseUserService,Serializable> {
 
     @Resource(name = "baseUseMapper")
     private BaseUserMapper baseUserMapper;

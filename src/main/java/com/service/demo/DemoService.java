@@ -1,12 +1,13 @@
 package com.service.demo;
 
-import com.mapper.demo.DemoMapper;
-import com.model.demo.Demo;
+import com.mapper.admin.demo.DemoMapper;
+import com.model.admin.demo.Demo;
 import com.untils.framework.LoggerInfo;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * Created by hefule on 2016/7/31.
  */
 @Service("demoService")
-public class DemoService extends LoggerInfo<DemoService> {
+public class DemoService extends LoggerInfo<DemoService,Serializable> {
 
     @Resource(name = "demoMapper")
     private DemoMapper userMapper;

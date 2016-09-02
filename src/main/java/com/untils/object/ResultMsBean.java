@@ -2,11 +2,13 @@ package com.untils.object;
 
 import com.untils.framework.LoggerInfo;
 
+import java.io.Serializable;
+
 /**
  * 结果返回类
  * Created by hefule on 2016/8/7 15:41.
  */
-public final class ResultMsBean<T> extends LoggerInfo<ResultMsBean>{
+public final class ResultMsBean<T> extends LoggerInfo<ResultMsBean,Serializable>{
     private Boolean success;
     private String message;
     private String exMessage;

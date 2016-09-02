@@ -1,8 +1,8 @@
 package com.test;
 
 import com.baseTest.BaseTest;
-import com.model.baseUser.BaseUserBean;
-import com.service.baseuser.BaseUserService;
+import com.model.admin.baseUser.BaseUserBean;
+import com.service.admin.baseUser.BaseUserService;
 import com.service.demo.DemoService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

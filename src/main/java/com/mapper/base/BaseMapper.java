@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import java.util.Map;
  * Created by hefule on 2016/8/17 15:10.
  */
 @Repository("baseMapper")
-public class BaseMapper<T> extends LoggerInfo<BaseMapper> {
+public class BaseMapper<T> extends LoggerInfo<BaseMapper,Serializable> {
 
     @Resource(name = "sqlSessionFactoryBean")
     private SqlSessionFactory sqlSessionFactoryBean;

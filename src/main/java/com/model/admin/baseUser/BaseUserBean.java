@@ -1,4 +1,4 @@
-package com.model.baseUser;
+package com.model.admin.baseUser;
 
 import com.model.base.BaseBean;
 
