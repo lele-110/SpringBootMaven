@@ -34,11 +34,6 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
-                <!--去掉安全设置引用-->
-               <exclusion>
-                     <groupId>org.springframework.boot</groupId>
-                     <artifactId>spring-boot-starter-security</artifactId>
-               </exclusion>
             </exclusions>
         </dependency>
         <!--添加适用于生产环境的功能，如性能指标和监测等功能。 -->
@@ -115,6 +110,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
+            <version>1.3.2</version>
         </dependency>
         <!--poi-->
         <dependency>
@@ -153,6 +149,11 @@
         <repository>
             <id>spring-snapshots</id>
             <url>http://repo.spring.io/libs-release</url>
+        </repository>
+        <repository>
+            <id>maven-net-cn</id>
+            <name>Maven China Mirror</name>
+            <url>http://maven.net.cn/content/groups/public/</url>
         </repository>
     </repositories>
     <pluginRepositories>

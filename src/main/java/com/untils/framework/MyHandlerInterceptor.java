@@ -12,7 +12,6 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Locale;
 
 /**
  * 定义拦截器
@@ -24,22 +23,6 @@ public class MyHandlerInterceptor extends WebMvcConfigurerAdapter {
 
     @Resource(name="redisUtil")
     protected RedisUtil redisUtil;
-
-    //设置切换语言的功能
-    @Bean
-    public LocaleResolver localeResolver() {
-        SessionLocaleResolver slr = new SessionLocaleResolver();
-        slr.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
-        return slr;
-    }
-   //设置切换语言的功能
-    @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
-        LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-        lci.setParamName("lang");
-        return lci;
-    }
-
     /**
      *  拦截器
      *  @author hefule
@@ -61,7 +44,7 @@ public class MyHandlerInterceptor extends WebMvcConfigurerAdapter {
                }
                 return true;
             }
-        },localeChangeInterceptor()).addPathPatterns("/**");
+        }).addPathPatterns("/**");
     }
 
     /**
